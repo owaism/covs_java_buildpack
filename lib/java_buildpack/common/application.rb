@@ -12,12 +12,13 @@ module JavaBuildpack
       #attr_reader :details
       #attr_reader :services
       attr_reader :environment
+      
       # Construct Application Object
       def initialize(buildpath)
         
         @config = Configuration.get("applicaiton")        
         
-        @buildpack_dir = File.join build_dir, config["applicaiton"]["relative_buildpack_dir"];
+        @buildpack_dir = File.join build_dir, config["application"]["buildpack_dir"];
         raise "Covisint Java Buildpack not downloaded propertly" unless Files.exists?(@buildpack_dir)
 
         @environment = ENV.to_hash

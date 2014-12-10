@@ -7,6 +7,7 @@ module JavaBuildpack
   class Buildpack
     
     include JavaBuildpack
+    include Common
     
     def initialize
       @logger = Common::LoggerFactory.instance.get_logger Buildpack
@@ -24,7 +25,11 @@ module JavaBuildpack
     end
     
     def compile build_dir, cache_dir
-      @logger.debug("Request to compile...")
+      puts "Compile Phase Begins: "
+      @application = Application.new build_dir
+      puts "Cache Directory: #{cache_dir}"
+      puts "Cache Directory Exists: #{File.exists? cache_dir}"
+      
     end
     
     def release build_dir
