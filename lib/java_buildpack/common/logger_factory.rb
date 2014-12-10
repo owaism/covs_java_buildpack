@@ -33,20 +33,32 @@ module JavaBuildpack
       end
 
       def get_logger (klazz)
-        FileLogger.new klazz
+        BuildpackLogger.new klazz
       end
 
     end
 
-    class FileLogger < ::Logger
+    class BuildpackLogger < ::Logger
 
-      def FileLogger.setup (logfile)
-        @@file_logger = Logger.new(logfile);
-        @@file_logger.level= ::Logger::DEBUG
+      def BuildpackLogger.setup (logfile)
+       @@file_logger =BuildpackLogger.initLogger(logfile)
+       
+       @@console_logger = nil
+       if(ENV.to_hash["LOG2CONSOLE"] != nil)
+         @@console_logger = BuildpackLogger.initLogger(STDERR);
+       end
+      end
+      
+      def BuildpackLogger.initLogger(logOutput)
+        
+        logger = Logger.new(logOutput);
+        logger.level= ::Logger::DEBUG
   
-        @@file_logger.formatter = lambda do |severity, datetime, klass, message|
+        logger.formatter = lambda do |severity, datetime, klass, message|
           "#{datetime.strftime('%FT%T.%2N%z')} #{klass.to_s.ljust(10)} #{severity.ljust(5)} #{message}\n"
         end
+        
+        logger
       end
 
       # Creates an instance
@@ -54,6 +66,10 @@ module JavaBuildpack
       def initialize(klass)
         @klass     = klass
         @delegates = [@@file_logger]
+        
+        if(nil != @@console_logger)
+          @delegates << @@console_logger
+        end
       end
 
       # Adds a message to the delegate +Logger+ instances
