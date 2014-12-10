@@ -5,7 +5,7 @@ $LOAD_PATH << File.join(ROOT_PATH, "lib")
 
 #require 'java_buildpack/buildpack'
 
-puts $HOME
+#puts $HOME
 
 exit 1
 #include JavaBuildpack
