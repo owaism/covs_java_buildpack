@@ -10,4 +10,4 @@ require 'java_buildpack/buildpack'
 puts "Require works fine!!!"
 include JavaBuildpack
 
-JavaBuildpack::Buildpack.new.compile ARGV[0], ARG[1]
+JavaBuildpack::Buildpack.new.compile ARGV[0], ARGV[1]
