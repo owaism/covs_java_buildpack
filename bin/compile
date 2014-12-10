@@ -3,7 +3,7 @@
 ROOT_PATH = File.expand_path("../buildpacks/covs_java_buildpack")
 $LOAD_PATH << File.join(ROOT_PATH, "lib")
 
-dir = Dir["#{Dir.pwd}/*"]
+dir = Dir["/tmp/staged/app/*"]
 puts "PWD: #{dir}"
 
 require 'java_buildpack/buildpack'
