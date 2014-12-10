@@ -16,4 +16,6 @@ compile_buildpack_bin=$compile_buildpack_dir/bin
 cd $build_dir
 mkdir -p $cache_dir
 
-ruby $compile_buildpack_bin/compile.rb 
+echo "Invoking Ruby Compile"
+
+ruby $compile_buildpack_bin/compile.rb $build_dir $cache_dir $compile_buildpack_dir
