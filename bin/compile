@@ -3,6 +3,9 @@
 ROOT_PATH = File.expand_path("../buildpacks/covs_java_buildpack")
 $LOAD_PATH << File.join(ROOT_PATH, "lib")
 
+puts $LOAD_PATH
+
+puts "before require"
 require 'java_buildpack/buildpack'
 puts "Require works fine!!!"
 include JavaBuildpack
