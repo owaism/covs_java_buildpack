@@ -18,8 +18,8 @@ module JavaBuildpack
       exit_status = (File.exists? File.join build_dir,"web.xml")? 0:1
       
       @logger.debug("Not Detected for this buildpack") unless exit_status == 0
-      
-      exit exit_status
+      puts "nothing"
+      exit 1
       
     end
     
