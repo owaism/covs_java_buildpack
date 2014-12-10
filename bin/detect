@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
-exit -1
+puts "java build pack"
+exit 0
 #ROOT_PATH = File.expand_path("../")
 #$LOAD_PATH << File.join(ROOT_PATH, "lib")
 
