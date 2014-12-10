@@ -2,6 +2,7 @@
 
 require "java_buildpack/common/logger_factory"
 require "java_buildpack/common/application"
+require "java_buildpack/components"
 
 module JavaBuildpack
   class Buildpack
@@ -27,6 +28,7 @@ module JavaBuildpack
     def compile (build_dir, cache_dir, buildpack_dir)
       puts "Compile Phase Begins: "
       @application = Application.new(build_dir, cache_dir, buildpack_dir)
+      Components.install(@application)
     end
     
     def release build_dir
