@@ -24,6 +24,7 @@ module JavaBuildpack
     end
     
     def compile build_dir, cache_dir
+      puts "$HOME"
       @logger.debug("Request to compile...")
     end
     
