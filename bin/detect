@@ -1,13 +1,13 @@
 #!/usr/bin/env ruby
 
-ROOT_PATH = File.expand_path("../")
-$LOAD_PATH << File.join(ROOT_PATH, "lib")
+#ROOT_PATH = File.expand_path("../")
+#$LOAD_PATH << File.join(ROOT_PATH, "lib")
 
 #require 'java_buildpack/buildpack'
 
 #puts $HOME
 
-exit 1
+exit -1
 #include JavaBuildpack
 
 #JavaBuildpack.Buildpack.new.detect ARGV[0]
