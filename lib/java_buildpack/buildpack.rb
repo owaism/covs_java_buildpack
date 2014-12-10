@@ -26,9 +26,9 @@ module JavaBuildpack
     
     def compile build_dir, cache_dir
       puts "Compile Phase Begins: "
-      @application = Application.new build_dir
-      puts "Cache Directory: #{cache_dir}"
-      puts "Cache Directory Exists: #{File.exists? cache_dir}"
+      #@application = Application.new build_dir
+      #puts "Cache Directory: #{cache_dir}"
+      #puts "Cache Directory Exists: #{File.exists? cache_dir}"
       
     end
     
