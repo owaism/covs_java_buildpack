@@ -4,5 +4,5 @@ components:
     tar_file_path:resources/components/apache2.tar
   jre:
     tar_file_path:resources/components/jre.tar
-   tomcat:
+  tomcat:
      tar_file_path:resources/components/tomcat.tar
