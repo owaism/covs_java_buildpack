@@ -1,14 +1,9 @@
-#!/usr/bin/env ruby
-puts "java build pack"
-exit 0
-#ROOT_PATH = File.expand_path("../")
-#$LOAD_PATH << File.join(ROOT_PATH, "lib")
+#!/bin/sh
 
-#require 'java_buildpack/buildpack'
-
-#puts $HOME
-
-
-#include JavaBuildpack
-
-#JavaBuildpack.Buildpack.new.detect ARGV[0]
+# this pack is valid for apps with a hello.txt in the root
+if [ -f $1/hello.txt ]; then
+  echo "HelloFramework"
+  exit 0
+else
+  exit 1
+fi
