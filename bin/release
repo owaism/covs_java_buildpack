@@ -1,13 +1,3 @@
 #!/usr/bin/env ruby
 
-ROOT_PATH = File.expand_path("../")
-puts ROOT_PATH
-$LOAD_PATH << File.join(ROOT_PATH, "lib")
-
-require 'java_buildpack/buildpack'
-
-include JavaBuildpack
-
-JavaBuildpack.Buildpack.new.release ARGV[0]
-
-`;`
+puts ./boot.rb ARGV[0]
