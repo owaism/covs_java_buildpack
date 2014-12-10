@@ -1,0 +1,3 @@
+---
+applicaiton:
+  relative_buildpack_dir: "../../buildpacks/covs_java_buildpack"

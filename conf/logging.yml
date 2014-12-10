@@ -1,0 +1,5 @@
+---
+logger:
+  dir: "~/logs"
+  filename: "buildpack.log"
+  leveld: "debug"
