@@ -26,5 +26,9 @@ module JavaBuildpack
     def compile build_dir, cache_dir
       @logger.debug("Request to compile...")
     end
+    
+    def release build_dir
+      @logger.debug(build_dir)
+    end
   end
 end

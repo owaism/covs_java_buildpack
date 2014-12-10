@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+ROOT_PATH = File.expand_path("../")
+$LOAD_PATH << File.join(ROOT_PATH, "lib")
+
+require 'java_buildpack/buildpack'
+
+include JavaBuildpack
+
+JavaBuildpack.Buildpack.new.detect ARGV[0]
