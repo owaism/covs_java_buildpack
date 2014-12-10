@@ -10,4 +10,4 @@ $LOAD_PATH << File.join(ROOT_PATH, "lib")
 require 'java_buildpack/buildpack'
 include JavaBuildpack
 
-JavaBuildpack::Buildpack.new.compile ARGV[0], ARGV[1]
+JavaBuildpack::Buildpack.new.compile build_dir, cache_dir, buildpack_dir
