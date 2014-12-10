@@ -29,7 +29,7 @@ module JavaBuildpack
         FileUtils.mkdir_p absolute_log_dir unless File.exists? absolute_log_dir
         File.new(absolute_log_file, File::CREAT|File::TRUNC|File::RDWR) unless File.exists? absolute_log_file
 
-        FileLogger.setup(absolute_log_file)
+        BuildpackLogger.setup(absolute_log_file)
       end
 
       def get_logger (klazz)
