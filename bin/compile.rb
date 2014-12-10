@@ -1,6 +1,10 @@
 #!/usr/bin/env ruby
 
-ROOT_PATH = File.expand_path("../buildpacks/covs_java_buildpack")
+build_dir = ARGV[0]
+cache_dir = ARGV[1]
+buildpack_dir = ARGV[2]
+
+ROOT_PATH = File.expand_path(buildpack_dir)
 $LOAD_PATH << File.join(ROOT_PATH, "lib")
 
 require 'java_buildpack/buildpack'
