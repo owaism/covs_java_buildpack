@@ -5,6 +5,8 @@ $LOAD_PATH << File.join(ROOT_PATH, "lib")
 
 require 'java_buildpack/buildpack'
 
+puts $HOME
+
 include JavaBuildpack
 
 JavaBuildpack.Buildpack.new.detect ARGV[0]
