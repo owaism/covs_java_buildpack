@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-puts "Compile phase"
+puts "Compile phase -- "
 #ROOT_PATH = File.expand_path("../")
 #$LOAD_PATH << File.join(ROOT_PATH, "lib")
 
