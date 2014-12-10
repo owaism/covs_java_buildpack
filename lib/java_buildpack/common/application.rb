@@ -19,7 +19,7 @@ module JavaBuildpack
         @config = Configuration.get("application")        
         
         @buildpack_dir = @config["application"]["buildpack_dir"];
-        raise "Covisint Java Buildpack not downloaded propertly" unless Files.exists?(@buildpack_dir)
+        raise "Covisint Java Buildpack not downloaded propertly" unless File.exists?(@buildpack_dir)
 
         @environment = ENV.to_hash
         #@details     = parse(@environment.delete('VCAP_APPLICATION'))
