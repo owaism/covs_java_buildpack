@@ -20,9 +20,11 @@ module JavaBuildpack
         @log_file = @configuration["logger"]["filename"]
         @default_level = @configuration["logger"]["leveld"]
         
-        
+              
         absolute_log_dir = File.expand_path(@log_dir)
         absolute_log_file = File.join(absolute_log_dir, @log_file)
+        
+        puts "LOG FILE #{absolute_log_file}"
 
         FileUtils.mkdir_p absolute_log_dir unless File.exists? absolute_log_dir
         File.new(absolute_log_file, File::CREAT|File::TRUNC|File::RDWR) unless File.exists? absolute_log_file
