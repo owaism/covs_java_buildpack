@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 ROOT_PATH = File.expand_path("../")
+puts ROOT_PATH
 $LOAD_PATH << File.join(ROOT_PATH, "lib")
 
 require 'java_buildpack/buildpack'
