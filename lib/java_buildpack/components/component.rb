@@ -14,7 +14,7 @@ module JavaBuildpack
         
         @application = application
         @build_dir = build_dir
-        @tar_file = File.join(application.buildpack_dir, apache2_tar_file)
+        @tar_file = File.join(application.buildpack_dir, tar_file)
         
         fail "Tar file #{@tar_file} does not exist." unless File.exists?(@tar_file)
       end
