@@ -29,6 +29,9 @@ module JavaBuildpack
         puts "Untarring #{@tar_file}..."
         result = %x(tar -xf #{@tar_file} -C #{@build_dir};echo "true")
         puts "#{@tar_file} untarred...#{result}"
+        apache2Dir = File.join(@build_dir, "apache2")
+        apache2DirFiles = Dir[apache2Dir+"/*"]
+        puts "APACHE 2 DIRECTORY STRUCTURE: #{apache2DirFiles}"
       end
       
     end
