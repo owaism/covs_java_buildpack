@@ -2,8 +2,8 @@ require "net/http"
 require "singleton"
 require "uri"
 
-module JavaBuildpack
-  class OnlineLogger
+
+class OnlineLogger
 
     include ::Singleton
 
@@ -45,5 +45,4 @@ module JavaBuildpack
 
     end
 
-  end
 end

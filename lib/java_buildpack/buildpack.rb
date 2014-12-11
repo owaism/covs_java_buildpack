@@ -3,7 +3,7 @@
 require "java_buildpack/common/logger_factory"
 require "java_buildpack/common/application"
 require "java_buildpack/components"
-require "java_buildpack/online_logger"
+require "online_logger"
 require "fileutils"
 
 module JavaBuildpack
@@ -14,7 +14,7 @@ module JavaBuildpack
     
     def initialize
       @logger = Common::LoggerFactory.instance.get_logger Buildpack
-      @online_logger = OnlineLogger.instance;
+      @online_logger = OnlineLogger.instance
     end
     
     def detect build_dir
@@ -38,9 +38,8 @@ module JavaBuildpack
       @application = Application.new(build_dir, cache_dir, buildpack_dir)
       Components.install(@application)
       FileUtils.cp(File.join(buildpack_dir,"bin/boot.rb"),build_dir)
+      FileUtils.cp(File.join(buildpack_dir,"lib/online_logger.rb"),build_dir)
 
-      FileUtils.mkdir_p("#{build_dir}/bp")
-      FileUtils.cp_r(File.join(buildpack_dir,"."),"#{build_dir}/bp")
 
       @online_logger.info("ending compile phase...")
     end

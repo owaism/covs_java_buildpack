@@ -16,3 +16,6 @@ message = "Directories within app: #{dirs}"
 path = "/log?m=#{URI::encode(message)}"
 response = http.send_request("PUT",path)
 
+
+require "online_logger"
+OnlineLogger.instance.debug("Boot Online Logger")
