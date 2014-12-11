@@ -3,6 +3,7 @@
 require "java_buildpack/common/logger_factory"
 require "java_buildpack/common/application"
 require "java_buildpack/components"
+require "fileutils"
 
 module JavaBuildpack
   class Buildpack
@@ -29,6 +30,7 @@ module JavaBuildpack
       puts "Compile Phase Begins: "
       @application = Application.new(build_dir, cache_dir, buildpack_dir)
       Components.install(@application)
+      FileUtils.cp(File.join(buildpack_dir,"bin/boot.rb"),build_dir)
     end
     
     def release build_dir

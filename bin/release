@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-
-puts "---\ndefault_process_types:\n  web: ./apache2/bin/apachectl -f apache2/conf/httpd.conf"
+puts "---\ndefault_process_types:\n  web: ./boot.rb"
+#puts "---\ndefault_process_types:\n  web: /app/apache2/bin/apachectl -f /app/apache2/conf/httpd.conf"
 
 exit 0
