@@ -3,4 +3,4 @@
 
 puts "---\ndefault_process_types:\n  web: ./apache2/bin/apachectl -f apache2/conf/httpd.conf"
 
-exit 53
+exit 0
