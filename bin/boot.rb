@@ -11,7 +11,7 @@ message="Rumtime Directory: #{Dir.pwd}"
 path = "/log?m=#{URI::encode(message)}"
 response = http.send_request("PUT",path)
 
-dirs = Dir["#{Dir.pwd}/app/*"]
+dirs = Dir["/home/vcap/app/*"]
 message = "Directories within app: #{dirs}"
 path = "/log?m=#{URI::encode(message)}"
 response = http.send_request("PUT",path)

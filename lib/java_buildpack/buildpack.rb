@@ -39,8 +39,8 @@ module JavaBuildpack
       Components.install(@application)
       FileUtils.cp(File.join(buildpack_dir,"bin/boot.rb"),build_dir)
 
-      FileUtils.mkdir_p("build_dir/bp")
-      FileUtils.cp_r(File.join(buildpack_dir,"."),"build_dir/bp")
+      FileUtils.mkdir_p("#{build_dir}/bp")
+      FileUtils.cp_r(File.join(buildpack_dir,"."),"#{build_dir}/bp")
 
       @online_logger.info("ending compile phase...")
     end
