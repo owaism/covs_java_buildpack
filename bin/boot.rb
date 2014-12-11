@@ -6,20 +6,12 @@ require "net/http"
 require "uri"
 require "online_logger"
 
+logger = OnlineLogger.instance
 
-uri = URI.parse("http://online-logger.cf.covisintrnd.com")
-host = uri.host
-port = uri.port
-http = Net::HTTP.new(host,port)
-message="Runtime Directory: #{Dir.pwd}"
-path = "/log?m=#{URI::encode(message)}"
-response = http.send_request("PUT",path)
+logger.info("Started booting the system")
 
-dirs = Dir["/home/vcap/app/*"]
-message = "Directories within app: #{dirs}"
-path = "/log?m=#{URI::encode(message)}"
-response = http.send_request("PUT",path)
+logger.info("Starting Apache...")
 
+response = `/home/vcap/app/apache2/bin/apachectl -f /home/vcap/app/apache2/conf/httpd.conf`
 
-
-OnlineLogger.instance.debug("Boot Online Logger")
+logger.info("Response of apache2 start: #{response}")
