@@ -1,5 +1,13 @@
 #!/usr/bin/env ruby
-require "bp/java_buildpack/online_logger"
+require "net/http"
+require "uri"
 
-@OnlineLogger.instance.info("FROM BOOT.RB")
-puts "SOMETHING PLEASE COME>....."
+
+uri = URI.parse("http://online-logger.cf.covisintrnd.com")
+host = uri.host
+port = uri.port
+http = Net::HTTP.new(host,port)
+message="From BOOT RB"
+path = "/log?m=#{URI::encode(message)}"
+response = http.send_request("PUT",path)
+
