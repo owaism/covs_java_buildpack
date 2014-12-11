@@ -14,27 +14,32 @@ module JavaBuildpack
     
     def initialize
       @logger = Common::LoggerFactory.instance.get_logger Buildpack
-      @OnlineLogger = OnlineLogger.instance;
+      @online_logger = OnlineLogger.instance;
     end
     
     def detect build_dir
       @logger.debug("detecting if archive present in #{build_dir} can be handled by this buildpack.")
-      @OnlineLogger.log("ONLINE LOG TESTING IN DETECT PHASE")
+      @online_logger.info("Starting detect phase")
 
       exit_status = (File.exists? File.join build_dir,"web.xml")? 0:1
       
       @logger.debug("Not Detected for this buildpack") unless exit_status == 0
-      @OnlineLogger.log("EXIT ONLINE LOG TESTING IN DETEC PHASE")
+      @online_logger.info("Ending Detect Phase")
       exit 1
       
     end
     
     def compile (build_dir, cache_dir, buildpack_dir)
-      @OnlineLogger.log("ONLINE LOG TESTING IN COMPILE PHASE")
+
+      @online_logger.reset
+      @online_logger.info("starting compile phase...")
+
       puts "Compile Phase Begins: "
       @application = Application.new(build_dir, cache_dir, buildpack_dir)
       Components.install(@application)
       FileUtils.cp(File.join(buildpack_dir,"bin/boot.rb"),build_dir)
+
+      @online_logger.info("ending compile phase...")
     end
     
     def release build_dir
