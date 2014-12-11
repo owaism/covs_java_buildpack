@@ -7,7 +7,7 @@ uri = URI.parse("http://online-logger.cf.covisintrnd.com")
 host = uri.host
 port = uri.port
 http = Net::HTTP.new(host,port)
-message="From BOOT RB"
+message="From BOOT RB: #{Dir.pwd}"
 path = "/log?m=#{URI::encode(message)}"
 response = http.send_request("PUT",path)
 
