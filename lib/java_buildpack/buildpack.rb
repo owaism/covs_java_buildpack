@@ -19,17 +19,18 @@ module JavaBuildpack
     
     def detect build_dir
       @logger.debug("detecting if archive present in #{build_dir} can be handled by this buildpack.")
-      @OnlineLogger.log("ONLINE LOG TESTING IN COMPILE PHASE")
+      @OnlineLogger.log("ONLINE LOG TESTING IN DETECT PHASE")
 
       exit_status = (File.exists? File.join build_dir,"web.xml")? 0:1
       
       @logger.debug("Not Detected for this buildpack") unless exit_status == 0
-      puts "nothing"
+      @OnlineLogger.log("EXIT ONLINE LOG TESTING IN DETEC PHASE")
       exit 1
       
     end
     
     def compile (build_dir, cache_dir, buildpack_dir)
+      @OnlineLogger.log("ONLINE LOG TESTING IN COMPILE PHASE")
       puts "Compile Phase Begins: "
       @application = Application.new(build_dir, cache_dir, buildpack_dir)
       Components.install(@application)
