@@ -13,6 +13,7 @@ module JavaBuildpack
     
     def Components.install(application)
       configs = Configuration.get("components")
+      puts "COMPONENT CONFIGURATION #{configs}"
       apache2 = Apache2.new(application, configs["components"]["apache2"]["tar_file_path"], application.build_dir)
       apache2.install
     end
