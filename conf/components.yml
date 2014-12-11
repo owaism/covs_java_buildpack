@@ -1,8 +1,8 @@
 ---
 components:
   apache2:
-    tar_file_path:resources/components/apache2.tar
+    tar_file_path: resources/components/apache2.tar
   jre:
-    tar_file_path:resources/components/jre.tar
+    tar_file_path: resources/components/jre.tar
   tomcat:
-     tar_file_path:resources/components/tomcat.tar
+     tar_file_path: resources/components/tomcat.tar
