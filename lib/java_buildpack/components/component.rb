@@ -26,9 +26,9 @@ module JavaBuildpack
       private
       
       def untar
-        puts "Untarring #{tar_file}..."
+        puts "Untarring #{@tar_file}..."
         result = %x(tar -xf #{@tar_file} -C #{@build_dir};echo "true")
-        puts "#{tar_file} untarred...#{result}"
+        puts "#{@tar_file} untarred...#{result}"
       end
       
     end
