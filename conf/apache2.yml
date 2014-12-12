@@ -1,4 +1,4 @@
 ----
-download_url: http://download.nextag.com/apache//httpd/httpd-2.2.29.tar.gz
-downloaded_dir_name: httpd-2.4.10
-md5checksum_url: http://www.apache.org/dist/httpd/httpd-2.4.10.tar.gz.md5
+download_url: "http://download.nextag.com/apache//httpd/httpd-2.2.29.tar.gz"
+downloaded_dir_name: "httpd-2.4.10"
+md5checksum_url: "http://www.apache.org/dist/httpd/httpd-2.4.10.tar.gz.md5"
