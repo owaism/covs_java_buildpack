@@ -59,7 +59,7 @@ module JavaBuildpack
 
       
       def compile
-        download
+        download_tar
       end
       
       private
