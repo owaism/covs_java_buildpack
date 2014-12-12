@@ -39,7 +39,7 @@ module JavaBuildpack
           @logger.info("Starting #{@component_name} download...")
           @logger.info("#{@application.build_dir} exists: #{File.exist? @application.build_dir}")
           `echo 'hi'`
-          `cd #{@application.build_dir}`
+          `cd /tmp`
           download_file_name = "#{@component_name}.tar.gz"
 
           @logger.debug("`curl -l -o #{download_file_name} #{@configuration['download_url']}`")
