@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require "java_buildpack/common"
-require "java_buildpack/common/Configuration"
+require "java_buildpack/common/configuration"
 require "java_buildpack/common/application"
 require "online_logger"
 
