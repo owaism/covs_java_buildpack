@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-require "java_buildpack/components/component"
-
 module JavaBuildpack
   module Components
     
