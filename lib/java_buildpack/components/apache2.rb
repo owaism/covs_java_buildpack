@@ -9,7 +9,11 @@ module JavaBuildpack
       
       include JavaBuildpack
       include Components
-      
+
+      def initialize (application)
+        super
+        @component_name = "apache2"
+      end
       
     end
     

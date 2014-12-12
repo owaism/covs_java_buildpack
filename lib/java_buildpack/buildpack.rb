@@ -34,13 +34,10 @@ module JavaBuildpack
       @online_logger.reset
       @online_logger.info("starting compile phase...")
 
-      puts "Compile Phase Begins: "
       @application = Application.new(build_dir, cache_dir, buildpack_dir)
-      Components.install(@application)
+      Components.compile_all(@application)
       FileUtils.cp(File.join(buildpack_dir,"bin/boot.rb"),build_dir)
       FileUtils.cp(File.join(buildpack_dir,"lib/online_logger.rb"),build_dir)
-
-
       @online_logger.info("ending compile phase...")
     end
     

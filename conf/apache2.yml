@@ -1,0 +1,4 @@
+----
+download_url: http://mirrors.sonic.net/apache//httpd/httpd-2.4.10.tar.gz
+downloaded_dir_name: httpd-2.4.10
+md5checksum_url: http://www.apache.org/dist/httpd/httpd-2.4.10.tar.gz.md5
