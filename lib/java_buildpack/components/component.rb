@@ -47,7 +47,7 @@ module JavaBuildpack
         `tar xf #{tar_file}`
         @logger.debug("Untarred to #{untarred_dir_name}: #{File.exists? untarred_dir_name}")
 
-        new_untarred_dir = File.join(dest_loc, "#{@component_name}-#{@download_file_counter}.tar")
+        new_untarred_dir = File.join(File.dirname(tar_file), "#{@component_name}-#{@download_file_counter}.tar")
         FileUtils.move(untarred_dir_name, new_untarred_dir)
         @download_file_counter+=1
 
