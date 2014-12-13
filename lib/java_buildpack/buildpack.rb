@@ -42,6 +42,7 @@ module JavaBuildpack
         @online_logger.info("ending compile phase...")
       rescue Exception => e
         @online_logger.error(e)
+        raise e
       end
     end
 
