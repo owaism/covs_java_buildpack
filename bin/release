@@ -1,6 +1,11 @@
 #!/usr/bin/env ruby
+set -e            # fail fast
+set -o pipefail   # don't ignore exit codes when piping output
+set -x          # enable debugging
+
+cp -R /tmp/cache/apache2 /home/vcap/app/
 
 puts "---\ndefault_process_types:\n  web: ./boot.rb"
-#puts "---\ndefault_process_types:\n  web: /app/apache2/bin/apachectl -f /app/apache2/conf/httpd.conf"
+#puts "---\ndefault_process_types:\n  web: /home/vcap/app/apache2/bin/apachectl -f conf/httpd.conf"
 
 exit 0

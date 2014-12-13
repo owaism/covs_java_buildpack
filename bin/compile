@@ -15,23 +15,28 @@ compile_buildpack_dir=$(cd $(dirname $0); cd ..; pwd)
 compile_buildpack_bin=$compile_buildpack_dir/bin
 
 cd $build_dir
-mkdir -p $cache_dir
 
-curl -l -O http://zlib.net/zlib-1.2.8.tar.gz
-tar -xf zlib-1.2.8.tar.gz
-cd zlib-1.2.8
-./configure --prefix=/tmp/cache/zlib
-make
-make install
+if [ ! -d /tmp/cache/apache2]
+then
+    mkdir -p $cache_dir
 
-cd $build_dir
-curl -l -O http://download.nextag.com/apache//httpd/httpd-2.2.29.tar.gz
-tar -xf httpd-2.2.29.tar.gz
-cd httpd-2.2.29
-./configure --prefix=/home/vcap/app/apache2  --enable-mods-shared=all  --enable-http  --enable-https  --enable-expires  --enable-slotmem-shm  --enable-headers  --enable-rewrite  --enable-proxy  --enable-proxy-balancer  --enable-proxy-http  --enable-proxy-fcgi  --enable-mime-magic  --enable-log-debug --with-z=/tmp/cache/zlib
-make
+    curl -l -O http://zlib.net/zlib-1.2.8.tar.gz
+    tar -xf zlib-1.2.8.tar.gz
+    cd zlib-1.2.8
+    ./configure --prefix=/tmp/cache/zlib
+    make
+    make install
 
+    cd $build_dir
+    curl -l -O http://download.nextag.com/apache//httpd/httpd-2.2.29.tar.gz
+    tar -xf httpd-2.2.29.tar.gz
+    cd httpd-2.2.29
+    ./configure --prefix=/home/vcap/app/apache2  --enable-mods-shared=all  --enable-http  --enable-https  --enable-expires  --enable-slotmem-shm  --enable-headers  --enable-rewrite  --enable-proxy  --enable-proxy-balancer  --enable-proxy-http  --enable-proxy-fcgi  --enable-mime-magic  --enable-log-debug --with-z=/tmp/cache/zlib
+    make
 
+    cd ..
+    mv -R httpd-2.2.29 /tmp/cache/apache2
+fi
 
 #echo "Invoking Ruby Compile"
 
