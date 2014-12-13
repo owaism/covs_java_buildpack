@@ -34,7 +34,7 @@ module JavaBuildpack
 
 
         @logger.debug("#{zlib_configure_file} --prefix=#{zlib_install_dir}")
-        result = `#{zlib_configure_file} --prefix=#{zlib_install_dir}`
+        result = System("#{zlib_configure_file} --prefix=#{zlib_install_dir}")
 
         puts result
         @logger.debug("Configure ZLIB result: #{result[0..-100]}")
