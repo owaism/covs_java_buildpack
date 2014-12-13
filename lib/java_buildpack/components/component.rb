@@ -54,6 +54,8 @@ module JavaBuildpack
         download_uri = URI.parse(source_loc)
         downloaded_filename = File.basename(download_uri.path)
         downloaded_file_loc = File.join(dest_loc, downloaded_filename)
+
+        @logger.debug("Downloading #{source_loc} to #{downloaded_file_loc}")
         Net::HTTP.start(download_uri.host) { |http|
           download_file = open(downloaded_file_loc)
           http.request_get(download_uri.path) { |resp|
@@ -63,6 +65,8 @@ module JavaBuildpack
           }
           download_file.close
         }
+
+        @logger.info("#{downloaded_file_loc} Download successful")
         downloaded_file_loc
       end
 
