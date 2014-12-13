@@ -50,27 +50,27 @@ module JavaBuildpack
       def download_tar(source_loc, dest_loc)
         @logger.info("Attempting #{source_loc} download...")
 
-        Dir.chdir(@application.build_dir)
         download_uri = URI.parse(source_loc)
         downloaded_filename = File.basename(download_uri.path)
         downloaded_file_loc = File.join(dest_loc, downloaded_filename)
 
         @logger.debug("Downloading #{source_loc} to #{downloaded_file_loc}")
         @logger.debug("inspect download_uri")
-        download_uri.each { |x|
-          @logger.debug("download_uri.#{x}: #{download_uri[x]}")
-        }
-        Net::HTTP.start(download_uri.host) { |http|
-          download_file = open(downloaded_file_loc)
-          http.request_get(download_uri.path) { |resp|
-            resp.read_body { |segment|
-              download_file.write(segment)
-            }
-          }
-          download_file.close
-        }
 
-        @logger.info("#{downloaded_file_loc} Download successful")
+        `curl -o #{downloaded_file_loc} #{source_loc}`
+
+
+        # Net::HTTP.start(download_uri.host) { |http|
+        #   download_file = open(downloaded_file_loc)
+        #   http.request_get(download_uri.path) { |resp|
+        #     resp.read_body { |segment|
+        #       download_file.write(segment)
+        #     }
+        #   }
+        #   download_file.close
+        # }
+
+        @logger.info("#{downloaded_file_loc} Download successful: #{File.exists? downloaded_file_loc}")
         downloaded_file_loc
       end
 
