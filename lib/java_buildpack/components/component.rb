@@ -42,7 +42,14 @@ module JavaBuildpack
         untarred_dir_name = File.join(File.dirname(tar_file),File.basename(tar_file,".*"))
         `tar xf #{tar_file}`
         @logger.debug("Untarred to #{untarred_dir_name}: #{File.exists? untarred_dir_name}")
-        untarred_dir_name
+
+        new_untarred_dir = File.join(dest_loc, "#{@component_name}-#{@download_file_counter}.tar")
+        FileUtils.move(untarred_dir_name, new_untarred_dir)
+        @download_file_counter+=1
+
+        @logger.info("Moved #{untarred_dir_name} to #{new_untarred_dir}")
+        new_untarred_dir
+
       end
 
       def download_tar(source_loc, dest_loc)
@@ -59,12 +66,7 @@ module JavaBuildpack
 
 
         @logger.info("#{downloaded_file_loc} Download successful: #{File.exists? downloaded_file_loc}")
-        new_file_location = File.join(dest_loc, "#{@component_name}-#{@download_file_counter}.tar")
-        FileUtils.move(downloaded_file_loc, new_file_location)
-        @download_file_counter+=1
-
-        @logger.info("Moved #{downloaded_file_loc} to #{new_file_location}")
-        new_file_location
+        downloaded_file_loc
       end
 
     end
