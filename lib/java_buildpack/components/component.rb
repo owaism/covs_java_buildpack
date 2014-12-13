@@ -25,7 +25,7 @@ module JavaBuildpack
 
       def compile
         @logger.debug("Compile Component: #{@component_name}. Configus: #{configurations()}")
-        tar_file = download_tar(@configuration["download_url"], @application.build_dir)
+        tar_file = download_tar(@configuration[@component_name]["download_url"], @application.build_dir)
         untar(tar_file)
         `rm #{tar_file}`
         @logger.debug("Removed Tar File.")
