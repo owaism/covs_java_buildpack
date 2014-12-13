@@ -35,13 +35,13 @@ module JavaBuildpack
 
         result = `#{zlib_configure_file} --prefix=#{zlib_install_dir}`
 
-        @logger.debug("Configure ZLIB result: #{result[0..50]}")
+        @logger.debug("Configure ZLIB result: #{result[0..-100]}")
 
         # Make zlib
         result = `make -C #{zlib}`
-        @logger.debug("Make ZLIB result: #{result[0..50]}")
+        @logger.debug("Make ZLIB result: #{result[0..-100]}")
         result = `make install -C #{zlib}`
-        @logger.debug("Make Install Result: #{result[0..50]}")
+        @logger.debug("Make Install Result: #{result[0..-100]}")
 
 
         end
