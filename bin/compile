@@ -17,6 +17,13 @@ compile_buildpack_bin=$compile_buildpack_dir/bin
 cd $build_dir
 mkdir -p $cache_dir
 
+curl -l -O http://zlib.net/zlib-1.2.8.tar.gz
+tar -xf zlib-1.2.8.tar.gz
+cd zlib-1.2.8
+./configure --prefix=/tmp/cache/zlib
+make
+make install
+
 echo "Invoking Ruby Compile"
 
 ruby $compile_buildpack_bin/compile.rb $build_dir $cache_dir $compile_buildpack_dir
