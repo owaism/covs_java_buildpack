@@ -3,7 +3,13 @@ set -e            # fail fast
 set -o pipefail   # don't ignore exit codes when piping output
 set -x          # enable debugging
 
-cp -R /tmp/cache/apache2 /home/vcap/app/
+build_dir=$1
+
+cd $build_dir/httpd-2.2.29
+
+make install
+
+cp $build_dir/httpd.conf /home/vcap/app/apache2/conf
 
 echo "---\ndefault_process_types:\n  web: ./boot.rb"
 #puts "---\ndefault_process_types:\n  web: /home/vcap/app/apache2/bin/apachectl -f conf/httpd.conf"

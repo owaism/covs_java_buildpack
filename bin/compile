@@ -35,8 +35,10 @@ cd $build_dir
     make
 
     cd ..
-    mv -R httpd-2.2.29 /tmp/cache/apache2
+    mv httpd-2.2.29 /tmp/cache/apache2
 #fi
+
+cp $compile_buildpack_dir/conf/httpd.conf $build_dir
 
 #echo "Invoking Ruby Compile"
 
