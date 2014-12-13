@@ -27,9 +27,12 @@ module JavaBuildpack
         # download and untar zlib
         zlib = download_untar @configuration["zlib_download_url"]
 
+        @logger.debug"ZlIB Dir Content: #{Dir[zlib]}"
         # configure and compile zlib
         zlib_configure_file = File.join(zlib,"configure")
         zlib_install_dir = File.join(@application.cache_dir,"zlib")
+
+
         result = `#{zlib_configure_file} --prefix=#{zlib_install_dir}`
 
         @logger.debug("Configure ZLIB result: #{result[0..50]}")
