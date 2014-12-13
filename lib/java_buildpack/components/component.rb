@@ -39,7 +39,7 @@ module JavaBuildpack
       def untar(tar_file)
         @logger.debug("untarring...#{tar_file}")
         # removing all extensions
-        untarred_dir_name = File.join(File.path(tar_file),File.basename(tar_file))
+        untarred_dir_name = File.join(File.dirname(tar_file),File.basename(tar_file))
         `tar xf #{tar_file}`
         @logger.debug("Untarred to #{untarred_dir_name}: #{File.exists? untarred_dir_name}")
         untarred_dir_name
