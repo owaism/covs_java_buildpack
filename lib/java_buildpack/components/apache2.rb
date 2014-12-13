@@ -33,14 +33,19 @@ module JavaBuildpack
         zlib_install_dir = File.join(@application.cache_dir,"zlib")
 
 
-        result = %x(#{zlib_configure_file} --prefix=#{zlib_install_dir})
+        @logger.debug("#{zlib_configure_file} --prefix=#{zlib_install_dir}")
+        result = `#{zlib_configure_file} --prefix=#{zlib_install_dir}`
 
+        puts result
         @logger.debug("Configure ZLIB result: #{result[0..-100]}")
 
         # Make zlib
-        result %x(make -C #{zlib})
+        @logger.debug("make -C #{zlib}")
+        result = `make -C #{zlib}`
+        puts result
         @logger.debug("Make ZLIB result: #{result[0..-100]}")
-        result = %x(make install -C #{zlib})
+        @logger.debug("make install -C #{zlib}")
+        result = `make install -C #{zlib}`
         @logger.debug("Make Install Result: #{result[0..-100]}")
 
         @logger.debug "Zlib Install Location: #{Dir[File.join(zlib_install_dir,'*')]}"
