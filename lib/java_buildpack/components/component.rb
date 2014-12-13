@@ -25,11 +25,7 @@ module JavaBuildpack
 
 
       def compile
-        @logger.debug("Compile Component: #{@component_name}. Configus: #{configurations()}")
-        tar_file = download_tar(@configuration["download_url"], @application.build_dir)
-        untar(tar_file)
-        `rm #{tar_file}`
-        @logger.debug("Removed Tar File.")
+
       end
 
 
@@ -61,16 +57,6 @@ module JavaBuildpack
 
         `curl -o #{downloaded_file_loc} #{source_loc}`
 
-
-        # Net::HTTP.start(download_uri.host) { |http|
-        #   download_file = open(downloaded_file_loc)
-        #   http.request_get(download_uri.path) { |resp|
-        #     resp.read_body { |segment|
-        #       download_file.write(segment)
-        #     }
-        #   }
-        #   download_file.close
-        # }
 
         @logger.info("#{downloaded_file_loc} Download successful: #{File.exists? downloaded_file_loc}")
         new_file_location = File.join(dest_loc, "#{@component_name}-#{@download_file_counter}")

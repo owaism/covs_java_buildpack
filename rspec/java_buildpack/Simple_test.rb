@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
 
-puts "sdfdsd.fafds".index(".") == nil
+puts "sdfdsd.fafds"[0..20]
