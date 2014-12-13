@@ -39,7 +39,7 @@ module JavaBuildpack
       def untar(tar_file)
         @logger.debug("untarring...#{tar_file}")
         # removing all extensions
-        untarred_dir_name = (tar_file.index(".") != nil)? tar_file[0, tar_file.index(".")]: tar_file
+        untarred_dir_name = File.join(File.path(tar_file),File.basename(tar_file))
         `tar xf #{tar_file}`
         @logger.debug("Untarred to #{untarred_dir_name}: #{File.exists? untarred_dir_name}")
         untarred_dir_name
@@ -59,7 +59,7 @@ module JavaBuildpack
 
 
         @logger.info("#{downloaded_file_loc} Download successful: #{File.exists? downloaded_file_loc}")
-        new_file_location = File.join(dest_loc, "#{@component_name}-#{@download_file_counter}")
+        new_file_location = File.join(dest_loc, "#{@component_name}-#{@download_file_counter}.tar")
         FileUtils.move(downloaded_file_loc, new_file_location)
         @download_file_counter+=1
 
