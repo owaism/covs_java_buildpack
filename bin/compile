@@ -24,6 +24,15 @@ cd zlib-1.2.8
 make
 make install
 
-echo "Invoking Ruby Compile"
+cd $build_dir
+curl -l -O http://download.nextag.com/apache//httpd/httpd-2.2.29.tar.gz
+tar -xf httpd-2.2.29.tar.gz
+cd httpd-2.2.29
+./configure --prefix=/home/vcap/app/apache2  --enable-mods-shared=all  --enable-http  --enable-https  --enable-expires  --enable-slotmem-shm  --enable-headers  --enable-rewrite  --enable-proxy  --enable-proxy-balancer  --enable-proxy-http  --enable-proxy-fcgi  --enable-mime-magic  --enable-log-debug --with-z=/tmp/cache/zlib
+make
 
-ruby $compile_buildpack_bin/compile.rb $build_dir $cache_dir $compile_buildpack_dir
+
+
+#echo "Invoking Ruby Compile"
+
+#ruby $compile_buildpack_bin/compile.rb $build_dir $cache_dir $compile_buildpack_dir
