@@ -16,8 +16,8 @@ compile_buildpack_bin=$compile_buildpack_dir/bin
 
 cd $build_dir
 
-if [ ! -d /tmp/cache/apache2]
-then
+#if [ -d /tmp/cache/apache2]
+#then
     mkdir -p $cache_dir
 
     curl -l -O http://zlib.net/zlib-1.2.8.tar.gz
@@ -36,7 +36,7 @@ then
 
     cd ..
     mv -R httpd-2.2.29 /tmp/cache/apache2
-fi
+#fi
 
 #echo "Invoking Ruby Compile"
 
