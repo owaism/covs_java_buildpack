@@ -33,7 +33,7 @@ module JavaBuildpack
         zlib_install_dir = File.join(@application.cache_dir,"zlib")
 
         shell_script = File.join(@application.buildpack_dir,"resources/shell/compile_zlib.sh");
-         fail "Shell Script failed" unless 0 == system("set +x;./#{shell_script}")
+         fail "Shell Script failed" unless 0 == system("./#{shell_script}")
         # @logger.debug("#{zlib_configure_file} --prefix=#{zlib_install_dir}")
         # result = system("#{zlib_configure_file} --prefix=#{zlib_install_dir}")
         #
