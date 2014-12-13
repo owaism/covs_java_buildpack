@@ -10,6 +10,7 @@ echo "In Compile Script"
 build_dir=$1
 cache_dir=$2
 
+log("Starting compile phase")
 
 compile_buildpack_dir=$(cd $(dirname $0); cd ..; pwd)
 compile_buildpack_bin=$compile_buildpack_dir/bin
@@ -43,3 +44,7 @@ cp $compile_buildpack_dir/conf/httpd.conf $build_dir
 #echo "Invoking Ruby Compile"
 
 #ruby $compile_buildpack_bin/compile.rb $build_dir $cache_dir $compile_buildpack_dir
+
+function log(message){
+    curl -XPUT http://online-logger.cf.covisintrnd.com?m=$message
+}
