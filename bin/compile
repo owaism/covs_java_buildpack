@@ -10,12 +10,6 @@ echo "In Compile Script"
 build_dir=$1
 cache_dir=$2
 
-function log(message){
-    curl -XPUT http://online-logger.cf.covisintrnd.com/log?m=$message
-}
-
-log("Starting compile phase")
-
 compile_buildpack_dir=$(cd $(dirname $0); cd ..; pwd)
 compile_buildpack_bin=$compile_buildpack_dir/bin
 
