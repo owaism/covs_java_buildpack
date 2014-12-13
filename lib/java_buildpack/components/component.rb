@@ -73,11 +73,12 @@ module JavaBuildpack
         # }
 
         @logger.info("#{downloaded_file_loc} Download successful: #{File.exists? downloaded_file_loc}")
-        new_file_name = File.join(dest_loc, "#{@component_name}-#{@download_file_counter}")
-        FileUtils.move(downloaded_file_loc, new_file_name)
+        new_file_location = File.join(dest_loc, "#{@component_name}-#{@download_file_counter}")
+        FileUtils.move(downloaded_file_loc, new_file_location)
         @download_file_counter+=1
 
-        @logger.info("Moved #{downloaded_file_loc} to #{new_file_name}")
+        @logger.info("Moved #{downloaded_file_loc} to #{new_file_location}")
+        new_file_location
       end
 
     end
