@@ -32,21 +32,22 @@ module JavaBuildpack
         zlib_configure_file = File.join(zlib,"configure")
         zlib_install_dir = File.join(@application.cache_dir,"zlib")
 
-
-        @logger.debug("#{zlib_configure_file} --prefix=#{zlib_install_dir}")
-        result = system("#{zlib_configure_file} --prefix=#{zlib_install_dir}")
-
-        puts result
-        @logger.debug("Configure ZLIB result: #{result[0..-100]}")
-
-        # Make zlib
-        @logger.debug("make -C #{zlib}")
-        result = `make -C #{zlib}`
-        puts result
-        @logger.debug("Make ZLIB result: #{result[0..-100]}")
-        @logger.debug("make install -C #{zlib}")
-        result = `make install -C #{zlib}`
-        @logger.debug("Make Install Result: #{result[0..-100]}")
+        shell_script = File.join(@application.buildpack_dir,"resources/shell/compile_zlib.sh");
+        puts system("./#{shell_script}")
+        # @logger.debug("#{zlib_configure_file} --prefix=#{zlib_install_dir}")
+        # result = system("#{zlib_configure_file} --prefix=#{zlib_install_dir}")
+        #
+        # puts result
+        # @logger.debug("Configure ZLIB result: #{result[0..-100]}")
+        #
+        # # Make zlib
+        # @logger.debug("make -C #{zlib}")
+        # result = `make -C #{zlib}`
+        # puts result
+        # @logger.debug("Make ZLIB result: #{result[0..-100]}")
+        # @logger.debug("make install -C #{zlib}")
+        # result = `make install -C #{zlib}`
+        # @logger.debug("Make Install Result: #{result[0..-100]}")
 
         @logger.debug "Zlib Install Location: #{Dir[File.join(zlib_install_dir,'*')]}"
 
