@@ -43,6 +43,7 @@ module JavaBuildpack
         result = `make install -C #{zlib}`
         @logger.debug("Make Install Result: #{result[0..-100]}")
 
+        @logger.debug "Zlib Install Location: #{Dir[File.join(zlib_install_dir,'*')]}"
 
         end
 
